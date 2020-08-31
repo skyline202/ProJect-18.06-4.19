@@ -43,7 +43,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: project-419.config
   DIY_OP_SH: project-419.sh
-  SSH_ACTIONS: false
+  SSH_ACTIONS: true
   UPLOAD_BIN_DIR: true
   UPLOAD_CONFIG: true
   UPLOAD_FIRMWARE: true
