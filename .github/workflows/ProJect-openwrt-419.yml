@@ -9,17 +9,17 @@
 #代码里有 name: 后面的内容随便改,冒号后面是有个空格的,如果修改固件名字就要考虑能不能显示出你想要的
 
 
-name: Lede-OpenWrt 固件
+name: ProJect-OpenWrt 固件
 
 on:
   repository_dispatch:
 
-#编辑任意指定文件触发开始编译(去掉下面5个#开启,最下面一行是指定修改什么文件就触发编译,我现在是修改diy.config文件触发)
+#编辑任意指定文件触发开始编译(去掉下面5个#开启,最下面一行是指定修改什么文件就触发编译,我现在是修改project-419.config文件触发)
 #  push:
 #    branches:
 #      - master
 #    paths:
-#      - 'diy.config'
+#      - 'project-419.config'
 
 
 #release发布触发开始编译(只是一个触发条件,不会发布的,又麻烦,没卵用,不用研究)
@@ -38,11 +38,11 @@ on:
 
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/project-openwrt/openwrt
+  REPO_BRANCH: openwrt-18.06
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: diy.config
-  DIY_OP_SH: diy-lede.sh
+  CONFIG_FILE: project-419.config
+  DIY_OP_SH: project-419.sh
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
   UPLOAD_CONFIG: true
@@ -53,7 +53,7 @@ env:
 
 jobs:
   build:
-    name: 编译OpenWrt-lede固件
+    name: 编译OpenWrt-project固件
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
 
@@ -131,7 +131,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-        name: OpenWrt_bin_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
+        name: ProJect_bin_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
         path: openwrt/bin
 
     - name: 提取config.buildinfo配置文件
@@ -162,7 +162,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organizer.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       with:
-        name: OpenWrt_firmware_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
+        name: ProJect_firmware_${{ env.DEVICE_NAME }}_${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
     - name: 上传固件到cowtransfer网盘
