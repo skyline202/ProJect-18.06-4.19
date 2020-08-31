@@ -1,6 +1,6 @@
 # Actions-OpenWrt 
 
-- 感谢ctcgfw大神提供的源码
+- 感谢[ctcgfw](https://github.com/project-openwrt/openwrt.git)大神提供的源码
 - 感谢p3terx大神提供的一键编译脚本
 - 感谢微软免费提供的编译平台
 - 感谢各位大佬提供的各种各样的插件
